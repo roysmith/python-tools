@@ -31,7 +31,7 @@ extract-model.py
 
 	The fields are more of a guess.  The best we can do is examine
 	a bunch of documents, observe what fields exist, and intuit
-	what they should be declared based on what data if found.  Due
+	what they should be declared based on what data is found.  Due
 	to MongoDB's schema-free nature, we can do no better than
 	guess.  Don't just accept this blindly; consider it a starting
 	point to save yourself a lot of typing.  Examine the output
