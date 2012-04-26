@@ -6,7 +6,8 @@ This package is a random collection of tools that might be useful to
 python programmers.  All of the code in this repo is released under a
 BSD license (see the top-level LICENSE file).
 
-Code released courtesy of S7 Labs (http://s7labs.com).
+Code released courtesy of S7 Labs (http://s7labs.com).  Thank you to
+Songza Media, Inc (http://songza.com) for allowing this to happen.
 
 mongoengine
 ===========
