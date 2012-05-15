@@ -68,3 +68,37 @@ stackprint.py
 	web server.  In practice, shit happens.  This is a convient
 	tool to identify which shit happens the most, so you can
 	attack the worst problems first.
+
+django
+======
+
+This is a collection of small utilities (and supporting middleware)
+which have proven useful when writing django apps.
+
+A common pattern when parsing query parameters is verifying that
+required parameters have been included, optional parameters get their
+default values, parameters which are supposed to be integers, or
+booleans, or whatever, are indeed strings representing those types,
+etc.  The family of _param() functions simplifies all this.
+
+For example, imagine you have a view which requires a query
+parameter, username.  In your view, you can simply write:
+
+    username = _param(request, 'username')
+
+and everything is take care of for you.  If the username parameter is
+missing, BadRequest is raised, and the middleware arranges to return a
+400 status code with an appropriate message in the body:
+
+    missing required parameter (username)"
+
+Likewise,
+
+    limit = _int_param(request, 'limit', 10)
+
+will return the value of the limit paramter converted to an int.  If
+the parameter is missing, the default value of 10 will be returned.
+If the request included a query parameter, "limit=x", it would detect
+that "x" is not a valid integer and return a 400 with a body of
+
+    parameter 'limit' isn't a valid integer (u'x')
