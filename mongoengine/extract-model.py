@@ -112,7 +112,7 @@ def find_spec(count, doc_count, types):
         return "!! Unknown field type (%s)" % data_type
 
     if is_list:
-        return "ListField(%s(%s))" % field_type
+        return "ListField(%s())" % field_type
     else:
         return "%s(%s)" % (field_type, "required=True" if count == doc_count else "")
             
