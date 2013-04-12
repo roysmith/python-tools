@@ -51,9 +51,9 @@ def make_fields(collection):
             count += 1
             if value is not None:
                 if isinstance(value, list):
-                    t = tuple([type(value[0]) if value else None])
+                    t = tuple([mongo_type(value[0]) if value else None])
                 else:
-                    t = type(value)
+                    t = mongo_type(value)
                 types.add(t)
             fields[field_name] = (count, types)
 
@@ -61,6 +61,15 @@ def make_fields(collection):
         count, types = fields[field_name]
         spec = find_spec(count, doc_count, types)
         print "    %s = %s" % (field_name, spec)
+
+def mongo_type(value):
+    """Return the type of value, except that long is mapped to int.
+
+    """
+    t = type(value)
+    if t == long:
+        t = int
+    return t
         
 field_map = {
     int: 'IntField',
